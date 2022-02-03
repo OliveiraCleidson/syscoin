@@ -6,11 +6,15 @@ describe("LoginService", () => {
   let sut;
   let sutRequest;
   let validator;
+  let logger;
   beforeEach(() => {
     validator = {
       execute: jest.fn(() => Promise.resolve({ success: true })),
     };
-    sut = new LoginService(validator);
+    logger = {
+      info: jest.fn(),
+    };
+    sut = new LoginService(validator, logger);
     sutRequest = {
       user: "syscoin",
       password: "meEscolhe",
