@@ -1,13 +1,24 @@
-console.log("Prepara o Ambiente");
+import "dotenv/config";
+import express from "express";
+import cors from "cors";
+import helmet from "helmet";
 
-console.log("Prepara o Ambiente");
+const app = express();
+app.use(express.json());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+app.use(helmet());
 
-const val01 = 1;
-const val02 = 2;
-if (val01 === 2) {
-  console.log("Ambiente");
-}
+app.get("/", (req, res) => {
+  res.status(200).json({
+    message: "Hello World",
+  });
+});
 
-if (val02 === 2) {
-  console.log("Ambiente");
-}
+const port = process.env.PORT || 5009;
+app.listen(port, () => {
+  console.log(`Aplicativo iniciado na porta ${port}`);
+});
