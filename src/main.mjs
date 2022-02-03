@@ -2,9 +2,11 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
+import { routes } from "./routes.mjs";
 
 const app = express();
 app.use(express.json());
+
 app.use(
   cors({
     origin: "*",
@@ -12,11 +14,7 @@ app.use(
 );
 app.use(helmet());
 
-app.get("/", (req, res) => {
-  res.status(200).json({
-    message: "Hello World",
-  });
-});
+app.use(routes);
 
 const port = process.env.PORT || 5009;
 app.listen(port, () => {
