@@ -1,7 +1,7 @@
-import { validateUser } from "../../src/validators/userValidator.mjs";
+import { userValidator } from "../../src/validators/userValidator.mjs";
 
 describe("UserValidator", () => {
-  const sut = validateUser;
+  const sut = userValidator;
 
   it("should be ok", async () => {
     const request = {
