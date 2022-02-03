@@ -5,7 +5,7 @@ const userSchema = yup.object().shape({
   password: yup.string().required("O campo ${path} é obrigatório"),
 });
 
-async function validateUser(user) {
+async function userValidator(user) {
   try {
     const parsedUser = userSchema.cast(user);
     const result = await userSchema.validate(parsedUser, { abortEarly: false });
@@ -21,4 +21,4 @@ async function validateUser(user) {
   }
 }
 
-export { validateUser };
+export { userValidator };
